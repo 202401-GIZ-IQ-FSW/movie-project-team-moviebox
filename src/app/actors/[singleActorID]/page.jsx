@@ -1,11 +1,9 @@
 import React from 'react'
 
-function Movies() {
+export default function SingleActor() {
   return (
     <div>
-      Movies Page
+      Single Actor
     </div>
   )
 }
-
-export default Movies
