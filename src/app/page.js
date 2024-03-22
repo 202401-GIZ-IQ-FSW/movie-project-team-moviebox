@@ -1,7 +1,7 @@
 export default function Home() {
   return (
     <>
-    <div>Welcome to MovieBox</div>
+      <div>Welcome to MovieBox</div>
     </>
   );
 }
