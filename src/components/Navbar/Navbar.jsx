@@ -23,11 +23,11 @@ function Navbar() {
 
   return (
     <>
-      <div className="drawer">
+      <div className="drawer sticky top-0">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
-          <div className="w-full navbar bg-base-300">
+          <div className="w-full navbar">
             <div className="navbar-start">
               <div className="flex-none lg:hidden">
                 <label
@@ -66,9 +66,9 @@ function Navbar() {
                   <details>
                     <summary>Movies</summary>
                     <ul className="p-2 bg-base-200">
-                      <li>
-                        <a>Top Rate</a>
-                      </li>
+                    <Link href="/movies?category=top-rated">
+                        Top Rated
+                    </Link>
                       <li>
                         <a>Popular</a>
                       </li>
