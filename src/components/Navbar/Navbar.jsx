@@ -11,6 +11,22 @@ import SideBar from "../SideBar/SideBar"
 
 function Navbar() {
   const [genres, setGenres] = useState([])
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 0); // Set isScrolled to true if scrollTop is greater than 0
+    };
+
+    // Add event listener for scroll
+    window.addEventListener('scroll', handleScroll);
+
+    // Clean up event listener on component unmount
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []); // Run effect only once on component mount
 
   useEffect(() => {
     async function loadGenres() {
@@ -23,7 +39,7 @@ function Navbar() {
 
   return (
     <>
-      <div className="drawer sticky top-0">
+      <div className={`drawer sticky top-0 z-10 text-shadow ${isScrolled ? 'bg-black' : ''}`}>
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
