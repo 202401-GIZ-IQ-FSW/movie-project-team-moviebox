@@ -3,7 +3,7 @@ import React from 'react'
 function SearchBar() {
   return (
     <>
-      <label className="input input-bordered rounded-none flex items-center ">
+      <label className="input input-bordered rounded-none flex items-center bg-transparent border-2 border-x-0 border-t-0">
               <input
                 type="text"
                 className="grow w-full max-w-xs"

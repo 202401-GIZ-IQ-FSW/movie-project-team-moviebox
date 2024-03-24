@@ -66,7 +66,7 @@ const Page = () => {
         <section className='mx-10'>
           <h1 className='text-4xl font-bold'>Welcome.</h1>
           <h2 className='text-lg font-semibold mt-2'>Millions of movies, TV shows and people to discover. Explore now.</h2>
-        <hr class="h-px mt-4 mb-8 bg-gray-200 border-0 dark:bg-orange-700" />
+          <hr class="h-px mt-4 mb-8 bg-gray-200 border-0 dark:bg-orange-700" />
           <Row title="Latest Movies" movies={latestMovies} />
           <Row title="Top Rated Movies" movies={topRatedMovies} />
           <Row title="Popular Movies" movies={popularMovies} />
