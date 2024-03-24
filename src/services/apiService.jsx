@@ -114,3 +114,31 @@ export async function fetchMoviesByGenre(genreId) {
     return [];
   }
 }
+
+export async function fetchMoviesBySearchQuery(query){
+  try {
+    const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+    if (!response.ok) {
+      throw new Error('Failed to search for movies');
+    }
+    const data = await response.json();
+    return data.results; // Assuming data.results contains an array of movie objects
+  } catch (error) {
+    console.error('Error searching for movies:', error);
+    return [];
+  }
+}
+
+export async function fetchActorsByQuery(query) {
+  try {
+    const response = await fetch(`${BASE_URL}/search/person?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+    if (!response.ok) {
+      throw new Error('Failed to search for actors');
+    }
+    const data = await response.json();
+    return data.results; // Assuming data.results contains an array of actor objects
+  } catch (error) {
+    console.error('Error searching for actors:', error);
+    return [];
+  }
+}
