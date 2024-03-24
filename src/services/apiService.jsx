@@ -45,3 +45,58 @@ export async function fetchRandomMovieFromLatest() {
   }
 }
 
+export async function fetchTopRatedMovies() {
+  try {
+    const response = await fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch top-rated movies');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching top-rated movies:', error);
+    return [];
+  }
+}
+
+export async function fetchPopularMovies() {
+  try {
+    const response = await fetch(`${BASE_URL}/movie/popular?api_key=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch popular movies');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching popular movies:', error);
+    return [];
+  }
+}
+
+export async function fetchNowPlayingMovies() {
+  try {
+    const response = await fetch(`${BASE_URL}/movie/now_playing?api_key=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch now playing movies');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching now playing movies:', error);
+    return [];
+  }
+}
+
+export async function fetchUpcomingMovies() {
+  try {
+    const response = await fetch(`${BASE_URL}/movie/upcoming?api_key=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch upcoming movies');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching upcoming movies:', error);
+    return [];
+  }
+}

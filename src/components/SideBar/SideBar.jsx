@@ -7,7 +7,7 @@ function SideBar({genres}) {
     <>
       <div className="drawer-side ">
           <label htmlFor="my-drawer-3" aria-label="close sidebar" className="drawer-overlay"></label> 
-          <ul className="menu p-4 w-80 h-full bg-base-200 flex flex-col overflow-y-auto">
+          <ul className="menu p-4 w-80 h-full bg-black flex flex-col overflow-y-auto">
             {/* Sidebar content here */}
             <div>
             <SearchBar />

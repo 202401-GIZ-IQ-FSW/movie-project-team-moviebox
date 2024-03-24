@@ -1,11 +1,25 @@
-// page.jsx
 "use client"
 import { useState, useEffect } from 'react';
-import {fetchLatestMovies, fetchRandomMovieFromLatest} from '@/services/apiService'
+import Banner from '@/components/Banner/Banner';
+import Row from '@/components/Row/Row';
+import {
+  fetchLatestMovies, 
+  fetchRandomMovieFromLatest,
+  fetchTopRatedMovies,
+  fetchNowPlayingMovies,
+  fetchUpcomingMovies,
+  fetchPopularMovies
+} from '@/services/apiService'
+
 
 const Page = () => {
   const [latestMovies, setLatestMovies] = useState([]);
   const [randomMovie, setRandomMovie] = useState(null);
+  const [topRatedMovies, setTopRatedMovies] = useState([]);
+  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
+  const [upcomingMovies, setUpcomingMovies] = useState([]);
+  const [popularMovies, setPopularMovies] = useState([]);
+
 
   useEffect(() => {
     fetchLatestMovies()
@@ -21,38 +35,41 @@ const Page = () => {
     }
   }, [latestMovies]);
 
+  useEffect(() => {
+    fetchTopRatedMovies()
+      .then(movies => setTopRatedMovies(movies))
+      .catch(error => console.error('Error fetching top-rated movies:', error));
+  }, []);
+
+  useEffect(() => {
+    fetchNowPlayingMovies()
+      .then(movies => setNowPlayingMovies(movies))
+      .catch(error => console.error('Error fetching now playing movies:', error));
+  }, []);
+
+  useEffect(() => {
+    fetchUpcomingMovies() // Fetch upcoming movies
+      .then(movies => setUpcomingMovies(movies))
+      .catch(error => console.error('Error fetching upcoming movies:', error));
+  }, []);
+
+  useEffect(() => {
+    fetchPopularMovies()
+      .then(data => setPopularMovies(data))
+      .catch(error => console.error('Error fetching popular movies:', error));
+  }, []);
+
   return (
     <div>
-      <h1>Latest Movies</h1>
-      {latestMovies && latestMovies.length > 0 ? (
-        <ul>
-        {latestMovies.map(movie => (
-          <li key={movie.id}>{movie.title}</li>
-        ))}
-      </ul>
-      ) : (
-        <p>Loading...</p>
-      )}
-      <h1>Latest Movies</h1>
-      {latestMovies && latestMovies.length > 0 ? (
-        <ul>
-        {latestMovies.map(movie => (
-          <li key={movie.id}>{movie.title}</li>
-        ))}
-      </ul>
-      ) : (
-        <p>Loading...</p>
-      )}
-
-<h1>Random Movie from Latest</h1>
-      {randomMovie ? (
-        <div>
-          <h2>{randomMovie.title}</h2>
-          <p>{randomMovie.overview}</p>
-        </div>
-      ) : (
-        <p>Loading random movie...</p>
-      )}
+      <main>
+        <Banner latestMovies={latestMovies} randomMovie={randomMovie} />
+        <section className='mx-10'>
+          <Row title="Latest Movies" movies={latestMovies} />
+          <Row title="Top Rated Movies" movies={topRatedMovies} />
+          <Row title="Popular Movies" movies={popularMovies} />
+          <Row title="Upcoming Movies" movies={upcomingMovies} />
+        </section>
+      </main>
     </div>
   );
 }
