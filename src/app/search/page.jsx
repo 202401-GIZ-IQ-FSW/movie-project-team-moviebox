@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react"
 import { fetchMoviesBySearchQuery, fetchActorsByQuery } from "@/services/apiService"
 import { useSearchParams } from "next/navigation"
+import Link from "next/link"
 
 function SearchResults() {
   const [movies, setMovies] = useState([])
@@ -45,9 +46,9 @@ function SearchResults() {
         <h2>Movies</h2>
         {movies.length > 0 ? (
           <ul>
-            {movies.map((movie) => (
-              <li key={movie.id}>{movie.title}</li>
-            ))}
+            {movies.map((movie) => {
+              <li key={movie.id}><Link href={`/movies/${movie.id}`}>{movie.title}</Link></li>
+              })}
           </ul>
         ) : (
           <p>No movies found</p>

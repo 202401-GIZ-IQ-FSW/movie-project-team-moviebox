@@ -142,3 +142,31 @@ export async function fetchActorsByQuery(query) {
     return [];
   }
 }
+
+export async function fetchAllActors() {
+  try {
+    const response = await fetch(`${BASE_URL}/person/popular?api_key=${API_KEY}&page=1`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch actors');
+    }
+    const data = await response.json();
+    return data.results; // Assuming data.results contains an array of actor objects
+  } catch (error) {
+    console.error('Error fetching actors:', error);
+    return [];
+  }
+}
+
+export async function fetchActorDetails(actorId) {
+  try {
+    const response = await fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch actor details');
+    }
+    const actorDetails = await response.json();
+    return actorDetails;
+  } catch (error) {
+    console.error('Error fetching actor details:', error);
+    return null;
+  }
+}
