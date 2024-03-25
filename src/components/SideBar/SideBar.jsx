@@ -18,11 +18,11 @@ function SideBar({genres}) {
               <details open>
                 <summary><Link href="/movies">Movies</Link></summary>
                 <ul>
-                <li><a>Top Rate</a></li>
-                <li><a>Popular</a></li>
-                <li><a>Latest</a></li>
-                <li><a>Now Playing</a></li>
-                <li><a>Upcoming</a></li>
+                <li><Link href="/movies?category=top-rated">Top Rated</Link></li>
+                <li><Link href="/movies?category=popular">Popular</Link></li>
+                <li><Link href="/movies?category=latest">Latest</Link></li>
+                <li><Link href="/movies?category=now-playing">Now Playing</Link></li>
+                <li><Link href="/movies?category=upcoming">Upcoming</Link></li>
                 </ul>
               </details>
             </li>
@@ -30,9 +30,9 @@ function SideBar({genres}) {
               <details open>
                 <summary><Link href="/movies">Genre</Link></summary>
                 <ul>
-                {genres.map((genre) => (
+                  {genres.map((genre) => (
                     <li key={genre.id}>
-                      <a>{genre.name}</a>
+                      <Link href={`/movies?genre=${genre.name}&id=${genre.id}`}>{genre.name}</Link>
                     </li>
                   ))}
                 </ul>

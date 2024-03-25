@@ -82,20 +82,20 @@ function Navbar() {
                   <details>
                     <summary>Movies</summary>
                     <ul className="p-2 bg-base-200">
-                    <Link href="/movies?category=top-rated">
-                        Top Rated
-                    </Link>
                       <li>
-                        <a>Popular</a>
+                        <Link href="/movies?category=top-rated">Top Rated</Link>
                       </li>
                       <li>
-                        <a>Latest</a>
+                        <Link href="/movies?category=popular">Popular</Link>
                       </li>
                       <li>
-                        <a>Now Playing</a>
+                        <Link href="/movies?category=latest">Latest</Link>
                       </li>
                       <li>
-                        <a>Upcoming</a>
+                        <Link href="/movies?category=now-playing">Now Playing</Link>
+                      </li>
+                      <li>
+                        <Link href="/movies?category=upcoming">Upcoming</Link>
                       </li>
                     </ul>
                   </details>
@@ -106,7 +106,7 @@ function Navbar() {
                     <ul className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-200 rounded-box w-80 max-h-80 overflow-y-auto">
                       {genres.map((genre) => (
                         <li key={genre.id}>
-                          <a>{genre.name}</a>
+                          <Link href={`/movies?genre=${genre.name}&id=${genre.id}`}>{genre.name}</Link>
                         </li>
                       ))}
                     </ul>
