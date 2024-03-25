@@ -100,3 +100,73 @@ export async function fetchUpcomingMovies() {
     return [];
   }
 }
+
+export async function fetchMoviesByGenre(genreId) {
+  try {
+    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch movies by genre');
+    }
+    const data = await response.json();
+    return data.results;
+  } catch (error) {
+    console.error('Error fetching movies by genre:', error);
+    return [];
+  }
+}
+
+export async function fetchMoviesBySearchQuery(query){
+  try {
+    const response = await fetch(`${BASE_URL}/search/movie?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+    if (!response.ok) {
+      throw new Error('Failed to search for movies');
+    }
+    const data = await response.json();
+    return data.results; // Assuming data.results contains an array of movie objects
+  } catch (error) {
+    console.error('Error searching for movies:', error);
+    return [];
+  }
+}
+
+export async function fetchActorsByQuery(query) {
+  try {
+    const response = await fetch(`${BASE_URL}/search/person?api_key=${API_KEY}&query=${encodeURIComponent(query)}`);
+    if (!response.ok) {
+      throw new Error('Failed to search for actors');
+    }
+    const data = await response.json();
+    return data.results; // Assuming data.results contains an array of actor objects
+  } catch (error) {
+    console.error('Error searching for actors:', error);
+    return [];
+  }
+}
+
+export async function fetchAllActors() {
+  try {
+    const response = await fetch(`${BASE_URL}/person/popular?api_key=${API_KEY}&page=1`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch actors');
+    }
+    const data = await response.json();
+    return data.results; // Assuming data.results contains an array of actor objects
+  } catch (error) {
+    console.error('Error fetching actors:', error);
+    return [];
+  }
+}
+
+export async function fetchActorDetails(actorId) {
+  try {
+    const response = await fetch(`${BASE_URL}/person/${actorId}?api_key=${API_KEY}`);
+    if (!response.ok) {
+      throw new Error('Failed to fetch actor details');
+    }
+    const actorDetails = await response.json();
+    return actorDetails;
+  } catch (error) {
+    console.error('Error fetching actor details:', error);
+    return null;
+  }
+}
