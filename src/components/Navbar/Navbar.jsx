@@ -39,7 +39,7 @@ function Navbar() {
 
   return (
     <>
-      <div className={`drawer sticky top-0 z-10 text-shadow ${isScrolled ? 'bg-black' : ''}`}>
+      <div className={`drawer sticky top-0 z-30 text-shadow ${isScrolled ? 'bg-black' : ''}`}>
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
