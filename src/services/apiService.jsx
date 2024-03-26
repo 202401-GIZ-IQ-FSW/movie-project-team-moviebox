@@ -8,14 +8,14 @@ const BASE_URL = 'https://api.themoviedb.org/3'
       `${BASE_URL}/genre/movie/list?api_key=${API_KEY}`
     );
     if (!response.ok) throw new Error("Failed to fetch genres");
-    
+
     const { genres } = await response.json();
     return genres;
   } catch (error) {
     console.error("Error fetching genres:", error);
     return [];
   }
-} 
+}
 
 export async function fetchLatestMovies() {
   try {
