@@ -181,7 +181,7 @@ async function SingleMovies({ params: { singleMovieID } }) {
           title="movie-trailer"
           className='w-full'
           height="415"
-          src={`https://www.youtube.com/embed/${MovieTrailer.key}`}
+          src={MovieTrailer ? `https://www.youtube.com/embed/${MovieTrailer.key}` : ''}
           frameBorder="0"
           allowFullScreen
         ></iframe>
