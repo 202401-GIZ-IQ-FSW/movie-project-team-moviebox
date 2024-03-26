@@ -1,5 +1,7 @@
 import React from "react"
 import ActorCard from "@/components/ActorCard/ActorCard"
+import React from "react"
+import ActorCard from "@/components/ActorCard/ActorCard"
 
 function Actors() {
   return (
