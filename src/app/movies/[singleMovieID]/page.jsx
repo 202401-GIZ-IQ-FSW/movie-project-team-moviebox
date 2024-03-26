@@ -140,7 +140,7 @@ async function SingleMovies({ params: { singleMovieID } }) {
         <hr className="h-px mt-4 mb-8 bg-gray-200 border-0 dark:bg-orange-700" />
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 ">
         {mainActors.map((actor) => <div key={actor.id}>
-          <div>
+          <Link href={`/actors/${actor.id}`}>
           <Image
                 src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
                 alt={actor.name}
@@ -149,7 +149,7 @@ async function SingleMovies({ params: { singleMovieID } }) {
                 objectFit="cover"
                 className=""
               />
-          </div>
+          </Link>
         </div>)}
         </div>
       </section>
