@@ -104,7 +104,7 @@ export async function fetchUpcomingMovies() {
 
 export async function fetchMoviesByGenre(genreId) {
   try {
-    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`);
+    const response = await fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${API_KEY}&with_genres=${genreId}`, );
     if (!response.ok) {
       throw new Error('Failed to fetch movies by genre');
     }
